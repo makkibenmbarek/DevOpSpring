@@ -45,5 +45,23 @@ pipeline{
                 }
             }
         }
+	 stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t asej1/springprojet .'
+                }
+            }
+        }
+	        stage('Push image to Hub'){
+            steps{
+                script{
+		withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u asej1 -p $dockerhubpwd docker.io'
+}
+
+                   sh 'docker push asej1/springprojet:latest'
+                }
+            }
+        }
         }
 }

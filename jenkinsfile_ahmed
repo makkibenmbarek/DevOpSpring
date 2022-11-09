@@ -10,7 +10,7 @@ pipeline{
         stages{
 
 
-                       /*     stage('Testing process') {
+                            stage('Testing process') {
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
@@ -44,7 +44,7 @@ pipeline{
                     sh "mvn package -DskipTests=true"
                 }
             }
-        }*/
+        }
 	 stage('Build docker image'){
             steps{
                 script{

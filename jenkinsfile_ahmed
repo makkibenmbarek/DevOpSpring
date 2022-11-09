@@ -8,7 +8,7 @@ pipeline{
      
         
         stages{
-
+/*
 
                             stage('Testing process') {
                               steps {
@@ -44,7 +44,7 @@ pipeline{
                     sh "mvn package -DskipTests=true"
                 }
             }
-        }
+        }*/
 	 stage('Build docker image'){
             steps{
                 script{

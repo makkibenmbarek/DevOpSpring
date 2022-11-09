@@ -4,7 +4,7 @@ services:
     image: mysql
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ROOT_PASSWORD:asej
       MYSQL_DATABASE: achatdb   
     ports:
       - 3306:3306
@@ -12,7 +12,7 @@ services:
      - AppNet
      
   spring-boot:
-    image: ahmed/springprojet
+    image: asej1/springprojet
     container_name: spring
     ports:
       - 8082:8082

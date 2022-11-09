@@ -8,7 +8,7 @@ pipeline{
      
         
         stages{
-/*
+
 
                             stage('Testing process') {
                               steps {
@@ -37,7 +37,7 @@ pipeline{
 
                  	}
                	 }
-              }*/
+              }
 		stage("Maven Build") {
             steps {
                 script {

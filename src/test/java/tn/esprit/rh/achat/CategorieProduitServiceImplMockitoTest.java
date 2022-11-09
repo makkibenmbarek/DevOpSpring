@@ -36,7 +36,7 @@ public class CategorieProduitServiceImplMockitoTest {
 
 
         //then
-        assertNotNull(savedSecteurActivite.getLibelleCategorie());
+            assertNotNull(savedSecteurActivite.getLibelleCategorie());
 
 
     }

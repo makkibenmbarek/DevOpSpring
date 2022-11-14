@@ -15,7 +15,7 @@ services:
      - achatdb:/var/lib/mysql
 
   spring_app:
-    image: daly667/achat:latest
+    image: yessinejemaa/achat:latest
     container_name: achatspring
     restart: on-failure
     environment:

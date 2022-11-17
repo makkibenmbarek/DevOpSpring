@@ -10,7 +10,7 @@ pipeline{
         stages{
 
 
-                            stage('Testing process') {
+                            stage('JUnit+Mockito') {
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'

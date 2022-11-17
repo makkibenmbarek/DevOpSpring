@@ -9,14 +9,7 @@ pipeline {
                 credentialsId:"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";
             }
         }
-        stage('database connection') {
-            steps{
-                sh '''
-                sudo docker stop mysql || true
-                sudo docker restart mysql || true
-                '''
-            }
-        }
+        
         stage('cleanig the project') {
             steps{
                 sh 'mvn clean'
@@ -28,9 +21,11 @@ pipeline {
                 sh 'mvn  package'
             }
         }
-        stage ('Unit Test') {
+        stage ('Jacoco') {
             steps{
-                sh 'mvn  test'
+		 //sh 'mvn  test'
+		jacoco()
+               
             }
         }
         stage ('SonarQube analysis') {
@@ -48,7 +43,7 @@ pipeline {
          stage('Docker build')
         {
             steps {
-                 sh 'docker build --build-arg IP=0.0.0.0 -t makkibenmbarek/devops  .'
+                 sh 'docker build --build-arg IP=172.20.10.4 -t makkibenmbarek/devops  .'
             }
         }
         stage('Docker login')
@@ -70,13 +65,14 @@ pipeline {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
               }
-        stage('Sending email'){
-           steps {
-            mail bcc: '', body: '''Hello from Jenkins,
-            Devops Pipeline returned success.
-            Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'makki.benmbarek@esprit.tn'
-            }
-       }
+        
 
     }
+post {
+    always {
+       mail to: 'makki.benmbarek@esprit.tn',
+          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+          body: "${env.BUILD_URL} has result ${currentBuild.result}"
+    }
+  }
 }

@@ -4,7 +4,7 @@ services:
     image: mysqla
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD:asej
+      MYSQL_ROOT_PASSWORD: asej
       MYSQL_DATABASE: achatdb   
     ports:
       - 3306:3306

@@ -63,9 +63,5 @@ pipeline{
                 }
             }
         }
-	 stage('docker compose'){
-          
-           
-        }
         }
 }
